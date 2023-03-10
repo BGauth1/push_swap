@@ -1,6 +1,9 @@
 NAME = push_swap
 
-SRC = main.c
+SRC = main.c \
+	stack_utils.c \
+	instructions.c \
+	free.c
 
 # SRCBONUS = ft_lstnew.c \
 # 		ft_lstadd_front.c \
@@ -20,8 +23,8 @@ OBJ = $(notdir $(SRC:.c=.o))
 
 # OBJBONUS = $(notdir $(SRCBONUS:.c=.o))
 
-CFLAGS = -Werror -Wall -Wextra
-CC = gcc
+# CFLAGS = -Werror -Wall -Wextra
+CC = clang
 all : $(NAME)
 
 $(NAME) : $(OBJ)
@@ -31,7 +34,7 @@ $(NAME) : $(OBJ)
 # 	ar -rc $(NAME) $(OBJBONUS)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@
 
 clean :
 	rm -rf $(OBJ)
