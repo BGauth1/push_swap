@@ -52,3 +52,20 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 		tmp->next = new;
 	}
 }
+
+t_stack	*new_stack_a(int *tab, int length)
+{
+	int		i;
+	t_stack	*stack;
+
+	stack = new_stack(num_position(tab, tab[0], length));
+	if (!stack)
+		return (NULL);
+	i = 1;
+	while (i < length)
+	{
+		ft_stackadd_back(&stack, new_stack(num_position(tab, tab[i], length)));
+		i++;
+	}
+	return (stack);
+}

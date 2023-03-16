@@ -3,7 +3,11 @@ NAME = push_swap
 SRC = main.c \
 	stack_utils.c \
 	instructions.c \
-	free.c
+	free.c \
+	array.c \
+	parsing.c \
+	tmp_libft.c \
+	write_instruction.c
 
 # SRCBONUS = ft_lstnew.c \
 # 		ft_lstadd_front.c \
@@ -24,7 +28,7 @@ OBJ = $(notdir $(SRC:.c=.o))
 # OBJBONUS = $(notdir $(SRCBONUS:.c=.o))
 
 # CFLAGS = -Werror -Wall -Wextra
-CC = clang
+CC = gcc
 all : $(NAME)
 
 $(NAME) : $(OBJ)
