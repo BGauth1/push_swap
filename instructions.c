@@ -19,6 +19,8 @@ void	push(t_stack **s1, t_stack **s2, char instruction)
 {
 	t_stack	*tmp;
 
+	if (!*s2)
+		return;
 	tmp = *s2;
 	*s2 = tmp->next;
 	tmp->next = *s1;
@@ -65,4 +67,20 @@ void	reverse_rotate(t_stack *stack, char instruction)
 		write_instruction("rra\n");
 	else
 		write_instruction("rrb\n");
+}
+
+void	rotate_multiple(t_stack *s, int mvtop, int mvbot, char instruction)
+{
+	if (mvtop <= mvbot)
+		while (mvtop > 0)
+		{
+			rotate(s, instruction);
+			mvtop--;
+		}
+	else
+		while (mvbot > 0)
+		{
+			reverse_rotate(s, instruction);
+			mvbot--;
+		}
 }

@@ -1,24 +1,24 @@
 #include "push_swap.h"
 
-int	ft_abs(int n)
+static int	ft_abs(int n)
 {
 	if (n < 0)
 		n *= -1;
 	return (n);
 }
 
-int	change_instruction(char *str1, char *str2)
+static int	change_instruction(char *s1, char *s2)
 {
 	int	i;
 
-	if (str1[0] != str2[0] || str1[0] == 'p' || str2[0] == 'p')
+	if (s1[0] != s2[0] || s1[0] == 'p' || s2[0] == 'p' || ft_strlen(s1) != ft_strlen(s2))
 		return (0);
 	i = 1;
-	while (str1[i] == str2[i])
+	while (s1[i])
 		i++;
-	if (ft_abs(str1[i] - str2[i]) == 1)
+	if (ft_abs(s1[i] - s2[i]) == 1)
 	{
-		str1[i] = str1[i - 1];
+		s1[i] = s1[i - 1];
 		return (1);
 	}
 	return (0);

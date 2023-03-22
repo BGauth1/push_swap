@@ -53,19 +53,46 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	}
 }
 
-t_stack	*new_stack_a(int *tab, int length)
+t_stack	*new_stack_a(int length, char **av)
 {
 	int		i;
+	int		*tab;
 	t_stack	*stack;
 
+	tab = fill_tab(&length, av);
+	if (!tab)
+		return (NULL);
 	stack = new_stack(num_position(tab, tab[0], length));
 	if (!stack)
+	{
+		free(tab);
 		return (NULL);
+	}
 	i = 1;
 	while (i < length)
 	{
 		ft_stackadd_back(&stack, new_stack(num_position(tab, tab[i], length)));
 		i++;
 	}
+	free(tab);
 	return (stack);
 }
+
+// t_stack	*new_stack_a(char *s, int length)
+// {
+// 	int			i;
+// 	long long	num;
+// 	t_stack		*stack;
+
+// 	num = ft_atoi(s);
+// 	stack = new_stack(num_position(tab, tab[0], length));
+// 	if (!stack)
+// 		return (NULL);
+// 	i = 1;
+// 	while (i < length)
+// 	{
+// 		ft_stackadd_back(&stack, new_stack(num_position(tab, tab[i], length)));
+// 		i++;
+// 	}
+// 	return (stack);
+// }

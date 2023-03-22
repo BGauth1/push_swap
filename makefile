@@ -7,7 +7,10 @@ SRC = main.c \
 	array.c \
 	parsing.c \
 	tmp_libft.c \
-	write_instruction.c
+	write_instruction.c \
+	small_sort.c \
+	butterfly.c \
+	ft_split.c
 
 # SRCBONUS = ft_lstnew.c \
 # 		ft_lstadd_front.c \
@@ -28,7 +31,7 @@ OBJ = $(notdir $(SRC:.c=.o))
 # OBJBONUS = $(notdir $(SRCBONUS:.c=.o))
 
 # CFLAGS = -Werror -Wall -Wextra
-CC = gcc
+CC = gcc -g -Wall -Werror -Wextra
 all : $(NAME)
 
 $(NAME) : $(OBJ)

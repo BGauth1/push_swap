@@ -1,19 +1,31 @@
 #include "push_swap.h"
 
-int	*fill_tab(int ac, char **av)
+int	*fill_tab(int *ac, char **av)
 {
 	int	i;
 	int	*tab;
+	char	**args;
 
-	i = 1;
-	tab = malloc((ac - 1) * sizeof(int));
-	if (!tab)
+	i = 0;
+	args = ft_split(*ac, av);
+	if (!args)
 		error_exit();
-	while (i < ac)
+	while (args[i] != NULL)
+		i++;
+	*ac = i;
+	tab = malloc(i * sizeof(int));
+	if (!tab)
 	{
-		tab[i - 1] = ft_atoi(av[i]);
+		ft_free_split(args);
+		error_exit();
+	}
+	i = 0;
+	while (args[i] != NULL)
+	{
+		tab[i] = ft_atoi(args[i]);
 		i++;
 	}
+	ft_free_split(args);
 	return (tab);
 }
 
