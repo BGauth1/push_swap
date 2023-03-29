@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   butterfly.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbertet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 15:03:50 by gbertet           #+#    #+#             */
+/*   Updated: 2023/03/29 15:04:14 by gbertet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int		chunks_size(t_stack *sa)
+static int	chunks_size(t_stack *sa)
 {
 	int	stack_size;
 
@@ -10,25 +22,6 @@ int		chunks_size(t_stack *sa)
 	if (stack_size <= 150)
 		return (stack_size / 5);
 	return (stack_size / 11);
-}
-
-int     check_sorted(t_stack *stack_a, t_stack *stack_b)
-{
-	int		i;
-	t_stack *buff;
-
-	if (stack_b != NULL)
-		return (0);
-	i = 0;
-	buff = stack_a; 
-	while (buff != NULL)
-	{
-		if (buff->num != i)
-			return (0);
-		i++;
-		buff = buff->next;
-	}
-	return (1);
 }
 
 void	rotate_to_nearest(t_stack *s, int inf, int sup, char instruction)
@@ -44,7 +37,7 @@ void	rotate_to_nearest(t_stack *s, int inf, int sup, char instruction)
 	{
 		tmp = tmp->next;
 		if (tmp == NULL)
-			return;
+			return ;
 		mvtop++;
 	}
 	tmp = s;
@@ -59,12 +52,12 @@ void	rotate_to_nearest(t_stack *s, int inf, int sup, char instruction)
 	rotate_multiple(s, mvtop, mvbot, instruction);
 }
 
-void	push_chunk(t_stack **stack_a, t_stack **stack_b, int inf, int sup)
+static void	push_chunk(t_stack **stack_a, t_stack **stack_b, int inf, int sup)
 {
-	int	med;
-	int	n;
-	int	i;
-	t_stack *tmp;
+	int		med;
+	int		n;
+	int		i;
+	t_stack	*tmp;
 
 	med = (sup - inf) / 2 + inf;
 	i = 0;
@@ -84,7 +77,7 @@ void	push_chunk(t_stack **stack_a, t_stack **stack_b, int inf, int sup)
 	}
 }
 
-void    sort_butterfly(t_stack **stack_a, t_stack **stack_b)
+void	sort_butterfly(t_stack **stack_a, t_stack **stack_b)
 {
 	int	inf;
 	int	sup;

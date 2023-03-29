@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbertet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 15:10:26 by gbertet           #+#    #+#             */
+/*   Updated: 2023/03/29 15:10:27 by gbertet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	error_exit(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -14,7 +26,7 @@ int	is_space(char c)
 	return (0);
 }
 
-int	nb_words(char *s)
+static int	nb_words(char *s)
 {
 	int	n;
 	int	i;
@@ -29,7 +41,8 @@ int	nb_words(char *s)
 		{
 			n++;
 			i++;
-			if ((s[i - 1] == '+' || s[i - 1] == '-') && (s[i] < '0' || s[i] > '9'))
+			if ((s[i - 1] == '+' || s[i - 1] == '-')
+				&& (s[i] < '0' || s[i] > '9'))
 				return (-1);
 			while ((s[i] >= '0' && s[i] <= '9'))
 				i++;
@@ -44,10 +57,10 @@ int	nb_words(char *s)
 
 int	parse_args(char *s)
 {
-	int n_words;
+	int	nb_word;
 
-	n_words = nb_words(s);
-	if (n_words == -1 || n_words == 0)
+	nb_word = nb_words(s);
+	if (nb_word == -1 || nb_word == 0)
 		return (1);
 	return (0);
 }

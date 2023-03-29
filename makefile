@@ -6,39 +6,20 @@ SRC = main.c \
 	free.c \
 	array.c \
 	parsing.c \
-	tmp_libft.c \
+	libft.c \
 	write_instruction.c \
 	small_sort.c \
 	butterfly.c \
 	ft_split.c
 
-# SRCBONUS = ft_lstnew.c \
-# 		ft_lstadd_front.c \
-# 		ft_lstsize.c \
-# 		ft_lstlast.c \
-# 		ft_lstadd_back.c \
-# 		ft_lstdelone.c \
-# 		ft_lstclear.c \
-# 		ft_lstiter.c \
-# 		ft_lstmap.c \
-
-# ifdef BONUS
-# 	SRC += SRCBONUS
-# endif
-
 OBJ = $(notdir $(SRC:.c=.o))
 
-# OBJBONUS = $(notdir $(SRCBONUS:.c=.o))
-
-# CFLAGS = -Werror -Wall -Wextra
-CC = gcc -g -Wall -Werror -Wextra
+CFLAGS = -Werror -Wall -Wextra
+CC = clang
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-
-# bonus : $(OBJBONUS)
-# 	ar -rc $(NAME) $(OBJBONUS)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o : %.c
 	$(CC) -c $< -o $@

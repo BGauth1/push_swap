@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_instruction.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbertet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 15:17:43 by gbertet           #+#    #+#             */
+/*   Updated: 2023/03/29 15:17:44 by gbertet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	ft_abs(int n)
@@ -11,7 +23,8 @@ static int	change_instruction(char *s1, char *s2)
 {
 	int	i;
 
-	if (s1[0] != s2[0] || s1[0] == 'p' || s2[0] == 'p' || ft_strlen(s1) != ft_strlen(s2))
+	if (s1[0] != s2[0] || s1[0] == 'p' || s2[0] == 'p'
+		|| ft_strlen(s1) != ft_strlen(s2))
 		return (0);
 	i = 1;
 	while (s1[i])
@@ -32,10 +45,9 @@ void	write_instruction(char *instruction)
 	{
 		if (str)
 		{
-			write(1, str, ft_strlen(str) -1);
+			write(1, str, ft_strlen(str));
 			free(str);
 		}
-		write(1, "\n", 1);
 		return ;
 	}
 	if (!str)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instructions.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbertet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 15:06:52 by gbertet           #+#    #+#             */
+/*   Updated: 2023/03/29 15:06:55 by gbertet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap(t_stack *stack, char instruction)
@@ -5,7 +17,7 @@ void	swap(t_stack *stack, char instruction)
 	int	tmp;
 
 	if (!stack || !stack->next)
-		return;
+		return ;
 	tmp = stack->num;
 	stack->num = stack->next->num;
 	stack->next->num = tmp;
@@ -20,7 +32,7 @@ void	push(t_stack **s1, t_stack **s2, char instruction)
 	t_stack	*tmp;
 
 	if (!*s2)
-		return;
+		return ;
 	tmp = *s2;
 	*s2 = tmp->next;
 	tmp->next = *s1;
@@ -72,15 +84,19 @@ void	reverse_rotate(t_stack *stack, char instruction)
 void	rotate_multiple(t_stack *s, int mvtop, int mvbot, char instruction)
 {
 	if (mvtop <= mvbot)
+	{
 		while (mvtop > 0)
 		{
 			rotate(s, instruction);
 			mvtop--;
 		}
+	}
 	else
+	{
 		while (mvbot > 0)
 		{
 			reverse_rotate(s, instruction);
 			mvbot--;
 		}
+	}
 }

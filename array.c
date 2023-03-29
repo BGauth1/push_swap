@@ -1,8 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   array.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbertet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 15:02:03 by gbertet           #+#    #+#             */
+/*   Updated: 2023/03/29 15:02:10 by gbertet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+static int	parse_duplicates(int *tab, int length)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < length)
+	{
+		j = i + 1;
+		while (j < length)
+		{
+			if (tab[i] == tab[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	*atoi_args(char **args, int *tab)
 {
-	int	i;
+	int			i;
 	long long	num;
 
 	i = 0;
@@ -21,8 +53,8 @@ int	*atoi_args(char **args, int *tab)
 
 int	*fill_tab(int *ac, char **av)
 {
-	int	i;
-	int	*tab;
+	int		i;
+	int		*tab;
 	char	**args;
 
 	i = 0;
@@ -46,26 +78,6 @@ int	*fill_tab(int *ac, char **av)
 	}
 	ft_free_split(args);
 	return (tab);
-}
-
-int	parse_duplicates(int *tab, int length)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < length)
-	{
-		j = i + 1;
-		while (j < length)
-		{
-			if (tab[i] == tab[j])
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }
 
 int	num_position(int *tab, int num, int length)
