@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-int     check_sorted(t_stack *stack_a, t_stack *stack_b)
+int	check_sorted(t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;
-	t_stack *buff;
+	t_stack	*buff;
 
 	if (stack_b != NULL)
 		return (0);
 	i = 0;
-	buff = stack_a; 
+	buff = stack_a;
 	while (buff != NULL)
 	{
 		if (buff->num != i)
