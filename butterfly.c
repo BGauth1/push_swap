@@ -5,7 +5,11 @@ int		chunks_size(t_stack *sa)
 	int	stack_size;
 
 	stack_size = ft_stacksize(sa);
-	return (stack_size);
+	if (stack_size <= 50)
+		return (6);
+	if (stack_size <= 150)
+		return (stack_size / 5);
+	return (stack_size / 11);
 }
 
 int     check_sorted(t_stack *stack_a, t_stack *stack_b)
@@ -87,7 +91,7 @@ void    sort_butterfly(t_stack **stack_a, t_stack **stack_b)
 	int	max;
 	int	incr;
 
-	incr = ft_stacksize(*stack_a) / 11;
+	incr = chunks_size(*stack_a);
 	inf = incr * -1;
 	sup = 0;
 	max = ft_stacksize(*stack_a) - 1;

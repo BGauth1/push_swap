@@ -13,7 +13,7 @@ void    choose_sort(t_stack **sa, t_stack **sb)
 		sort_4(sa, sb);
 	else if (stack_size == 5)
 		sort_5(sa, sb);
-	else
+	else if (stack_size > 5)
 		sort_butterfly(sa, sb);
 }
 

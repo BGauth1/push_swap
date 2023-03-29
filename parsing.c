@@ -2,7 +2,7 @@
 
 void	error_exit(void)
 {
-	printf("Error.\n");
+	write(1, "Error\n", 6);
 	exit(1);
 }
 
@@ -29,6 +29,8 @@ int	nb_words(char *s)
 		{
 			n++;
 			i++;
+			if ((s[i - 1] == '+' || s[i - 1] == '-') && (s[i] < '0' || s[i] > '9'))
+				return (-1);
 			while ((s[i] >= '0' && s[i] <= '9'))
 				i++;
 			if (!is_space(s[i]) && (s[i] < '0' || s[i] > '9'))
@@ -45,7 +47,7 @@ int	parse_args(char *s)
 	int n_words;
 
 	n_words = nb_words(s);
-	if (n_words == -1)
+	if (n_words == -1 || n_words == 0)
 		return (1);
 	return (0);
 }

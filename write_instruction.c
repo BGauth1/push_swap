@@ -32,9 +32,10 @@ void	write_instruction(char *instruction)
 	{
 		if (str)
 		{
-			write(1, str, ft_strlen(str));
+			write(1, str, ft_strlen(str) -1);
 			free(str);
 		}
+		write(1, "\n", 1);
 		return ;
 	}
 	if (!str)

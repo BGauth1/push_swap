@@ -1,5 +1,24 @@
 #include "push_swap.h"
 
+int	*atoi_args(char **args, int *tab)
+{
+	int	i;
+	long long	num;
+
+	i = 0;
+	while (args[i] != NULL)
+	{
+		num = ft_atoi(args[i]);
+		if (num > 2147483647 || num < -2147483648)
+			return (NULL);
+		tab[i] = ft_atoi(args[i]);
+		i++;
+	}
+	if (parse_duplicates(tab, i) == 1)
+		return (NULL);
+	return (tab);
+}
+
 int	*fill_tab(int *ac, char **av)
 {
 	int	i;
@@ -19,11 +38,11 @@ int	*fill_tab(int *ac, char **av)
 		ft_free_split(args);
 		error_exit();
 	}
-	i = 0;
-	while (args[i] != NULL)
+	if (atoi_args(args, tab) == NULL)
 	{
-		tab[i] = ft_atoi(args[i]);
-		i++;
+		ft_free_split(args);
+		free(tab);
+		error_exit();
 	}
 	ft_free_split(args);
 	return (tab);
@@ -41,10 +60,7 @@ int	parse_duplicates(int *tab, int length)
 		while (j < length)
 		{
 			if (tab[i] == tab[j])
-			{
-				free(tab);
 				return (1);
-			}
 			j++;
 		}
 		i++;
