@@ -6,7 +6,7 @@
 /*   By: gbertet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:08:31 by gbertet           #+#    #+#             */
-/*   Updated: 2023/03/29 15:08:33 by gbertet          ###   ########.fr       */
+/*   Updated: 2023/04/11 15:46:43 by gbertet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	if (ac == 1)
+		return (0);
 	if (check_empty_args(ac, av))
 		error_exit();
 	stack_a = new_stack_a(ac - 1, av);
